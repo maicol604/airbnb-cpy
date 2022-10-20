@@ -5,6 +5,7 @@ import Item from '../../Components/Item';
 import Button from '../../Components/Button';
 import SearchWidget from '../../Containers/SearchWidget';
 import New from '../../Containers/New';
+import Footer from '../../Containers/Footer';
 import styled from 'styled-components';
 import {
     UpOutlined
@@ -90,9 +91,19 @@ const Home = () => {
                         <img src={require('../../Assets/images/carousel (2).jpeg')} alt=''/>
                     </div>
                     <div className='carousel-item'>
+                        <div className='carousel-content'>
+                            <div className='carousel-item-title'>
+                                Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
+                            </div>
+                        </div>
                         <img src={require('../../Assets/images/carousel (1).jpeg')} alt=''/>
                     </div>
                     <div className='carousel-item'>
+                        <div className='carousel-content'>
+                            <div className='carousel-item-title'>
+                                Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
+                            </div>
+                        </div>
                         <img src={require('../../Assets/images/carousel (3).jpeg')} alt=''/>
                     </div>
                 </Carousel>
@@ -153,7 +164,7 @@ const Home = () => {
                 <div>
                     <Row gutter={[16, 16]}>
                         {
-                            [0,0,0,0].map((item, i)=>(
+                            [0,0,0,0,0,0,0,0,0,0,0,0].map((item, i)=>(
                                 <Col span={6} key={i}>
                                     <Item
                                         score={'Nueva'}
@@ -181,9 +192,7 @@ const Home = () => {
                 />
             </div>
             <Divider />
-            <footer>
-                hi
-            </footer>
+            <Footer/>
             <BackTop>
                 <div className='backtop'>
                     <UpOutlined />

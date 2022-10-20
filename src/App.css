@@ -16,3 +16,6 @@
     margin-bottom: 1em;
     display: inline-block;
 }
+.color-primary{
+    color: var(--primary);
+}
