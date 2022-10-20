@@ -75,7 +75,7 @@ const Home = () => {
     return (
         <HomeWrapper>
             <div className='carousel-wapper'>
-                <Carousel >
+                <Carousel autoplay>
                     <div className='carousel-item'>
                         <div className='carousel-content'>
                             <div className='carousel-item-title'>
