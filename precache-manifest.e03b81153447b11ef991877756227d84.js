@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "467d91bbcec0bcab100e",
+    "revision": "cb9d040d824db30dfe24",
     "url": "/airbnb-cpy/static/css/main.d3410cd1.chunk.css"
   },
   {
-    "revision": "467d91bbcec0bcab100e",
-    "url": "/airbnb-cpy/static/js/main.467d91bb.chunk.js"
+    "revision": "cb9d040d824db30dfe24",
+    "url": "/airbnb-cpy/static/js/main.cb9d040d.chunk.js"
   },
   {
     "revision": "0a08aad3ae0f1840fa0a",
     "url": "/airbnb-cpy/static/js/1.0a08aad3.chunk.js"
   },
   {
-    "revision": "a44a6744f656f188a010",
+    "revision": "ab8504b8a3f180e5fc97",
     "url": "/airbnb-cpy/static/css/2.2c0a8fd8.chunk.css"
   },
   {
-    "revision": "a44a6744f656f188a010",
-    "url": "/airbnb-cpy/static/js/2.a44a6744.chunk.js"
+    "revision": "ab8504b8a3f180e5fc97",
+    "url": "/airbnb-cpy/static/js/2.ab8504b8.chunk.js"
   },
   {
     "revision": "de00d22f2cb53624e7a9",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/airbnb-cpy/static/media/carousel (3).cd436d00.jpeg"
   },
   {
-    "revision": "f93f660a95beece45414ae61a20fcd94",
+    "revision": "0b1345fb309deb2b4a51cac4cd1771a7",
     "url": "/airbnb-cpy/index.html"
   }
 ];
