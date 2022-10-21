@@ -22,10 +22,10 @@ const HomeWrapper = styled.div`
         margin: 1em;
         overflow: hidden;
         border-radius: 1em;
-        height: 80vh;
+        height: 65vh;
         .carousel-item{
             width: 100%;
-            min-height: 80vh;
+            min-height: 65vh;
             overflow: hidden;
             position: relative;
             display: flex !important;
@@ -209,7 +209,7 @@ const Home = () => {
                     <FilterOutlined style={{marginRight:'.5em'}}/> Filtros
                 </Label>
             </div>
-            <Divider />
+            <Divider style={{marginTop:'1em', marginBottom:'.5em'}}/>
             <div className='content'>
                 <div>
                     <span className='h3' style={{marginTop:'0'}}>
