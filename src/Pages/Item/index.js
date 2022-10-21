@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { default as ItemComponent } from '../../Components/Item';
 import Button from '../../Components/Button';
+import Comment from '../../Components/Comment';
 import Map from '../../Containers/Map';
 import { Col, Row, Divider, DatePicker, Breadcrumb, Avatar } from 'antd';
 import {
@@ -219,17 +220,17 @@ const Item = (props) => {
                     <Row gutter={[0, 0]}>
                         <Col span={6}>
                             <div className='img-container'>
-                                <img src={'https://placeimg.com/500/700/any'} alt=''/>
+                                <img src={'https://placeimg.com/500/701/any'} alt=''/>
                             </div>
                         </Col>
                         <Col span={6}>
                             <div className='img-container'>
-                                <img src={'https://placeimg.com/500/700/any'} alt=''/>
+                                <img src={'https://placeimg.com/501/700/any'} alt=''/>
                             </div>
                         </Col>
                         <Col span={6}>
                             <div className='img-container'>
-                                <img src={'https://placeimg.com/500/700/any'} alt=''/>
+                                <img src={'https://placeimg.com/501/701/any'} alt=''/>
                             </div>
                         </Col>
                         <Col span={6}>
@@ -237,7 +238,7 @@ const Item = (props) => {
                                 <div className='img-icon'>
                                     <PictureOutlined style={{width:'40%'}}/>
                                 </div>
-                                <img src={'https://placeimg.com/500/700/any'} alt=''/>
+                                <img src={'https://placeimg.com/501/702/any'} alt=''/>
                             </div>
                         </Col>
                     </Row>
@@ -338,6 +339,9 @@ const Item = (props) => {
                 </section>
             </article>
             <section className='map'>
+                <div className='h3' style={{marginTop:'0'}}>
+                    Donde iras
+                </div>
                 <Map/>
             </section>
             <Divider/>
@@ -387,14 +391,45 @@ const Item = (props) => {
                 </Row>
             </section>
             <Divider/>
+            <section>
+                <div className='h3' style={{marginTop:'0', marginBottom:'0'}}>
+                    <StarFilled style={{marginRight:'.5em'}}/> 00,00 (00 evaluaciones)
+                </div>
+                <div style={{opacity:'.5', marginBottom:'2em'}}>
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                </div>
+                <Row gutter={[64, 32]}>
+                    <Col span={12}>
+                        <Comment
+                            more
+                        />
+                    </Col>
+                    <Col span={12}>
+                        <Comment
+                        
+                        />
+                    </Col>
+                    <Col span={12}>
+                        <Comment
+                        
+                        />
+                    </Col>
+                    <Col span={12}>
+                        <Comment
+                            more
+                        />
+                    </Col>
+                </Row>
+            </section>
+            <Divider/>
             <div style={{width:'100%'}}>
                 <div className='h3' style={{marginTop:'0'}}>
                     Experiencias similares
                 </div>
                 <Row gutter={[16, 16]}>
                     {
-                        [0,0,0,0,0,0].map((item, i)=>(
-                            <Col span={4} key={i}>
+                        [0,0,0,0].map((item, i)=>(
+                            <Col span={6} key={i}>
                                 <ItemComponent
                                     score={'Nueva'}
                                     counter={100}
