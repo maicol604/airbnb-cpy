@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/airbnb-cpy/precache-manifest.7e59781e1cdc81e8c4596bf170fffeb2.js"
+  "/airbnb-cpy/precache-manifest.c6b33262a0c7f02e01b7e31ef5e2241a.js"
 );
 
 workbox.clientsClaim();
