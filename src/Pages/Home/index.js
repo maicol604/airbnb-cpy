@@ -4,10 +4,8 @@ import { Col, Row, Divider, Carousel, Select } from 'antd';
 import Item from '../../Components/Item';
 import Button from '../../Components/Button';
 import SearchWidget from '../../Containers/SearchWidget';
+import Filters from '../../Containers/Filters';
 import styled from 'styled-components';
-import {
-    FilterOutlined
-} from '@ant-design/icons';
 
 const items = [0,0,0,0,0,0]
 
@@ -53,75 +51,13 @@ const HomeWrapper = styled.div`
             }
         }
     }
-    .filters-wrapper{
-        display: flex;
-        justify-content: space-between;
-        padding: 0 2em;
-        align-items: center;
-        .ant-select-selector{
-            color: var(--secondary);
-            border-radius: 5em;
-            outline: none;
-            height: auto;
-            width: auto;
-            padding: .5em 2em;
-            //font-size: .75em;
-            .ant-select-selection-item{
-                font-weight: 600;
-                color: var(--secondary);
-            }
-        }
-        .ant-select-focused .ant-select-selector,
-        .ant-select-selector:focus,
-        .ant-select-selector:active,
-        .ant-select-open .ant-select-selector {
-            //border-color: #d9d9d9 !important;
-            box-shadow: none !important;
-            &:hover, &:focus{
-                border-color: var(--secondary) !important;
-            }
-        }
-        .ant-select:not(.ant-select-disabled):hover .ant-select-selector{
-            border-color: var(--secondary) !important;
-        }
-    }
 `;
 
-const Option = Select;
-
-const LabelWrapper = styled.div`
-    font-weight: 600;
-    text-transform: capitalize;
-    padding: .75em 2em;
-    border-radius: 5em;
-    border: 1px solid rgba(0,0,0,.25);
-    white-space: nowrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all .25s;
-    cursor: pointer;
-    :hover{
-        border-color: var(--secondary);
-    }
-`;
-
-const Label = (props) => {
-    return (
-        <LabelWrapper {...props}>
-            {props.children}
-        </LabelWrapper>
-    )
-}
 
 const Home = () => {
 
     const handleSearch = (e) => {
         console.log(e)
-    }
-
-    const handleChange = (e) => {
-
     }
 
     return (
@@ -159,43 +95,7 @@ const Home = () => {
                     </div>
                 </Carousel>
             </div>
-            <div className='filters-wrapper'>
-                <Select defaultValue="1" onChange={handleChange}>
-                    <Option value="1">Price</Option>
-                    <Option value="2">Option 1</Option>
-                </Select>
-                
-                <Select defaultValue="1" onChange={handleChange}>
-                    <Option value="1">Available languages</Option>
-                    <Option value="2">Option 1</Option>
-                </Select>
-                
-                <Select defaultValue="1" onChange={handleChange}>
-                    <Option value="1">Schedule of:</Option>
-                    <Option value="2">Option 1</Option>
-                </Select>
-
-                <Divider type="vertical" style={{height:'2em'}}/>
-
-                <Label>
-                    art and culture
-                </Label>
-                <Label>
-                    leisure
-                </Label>
-                <Label>
-                    food and drink
-                </Label>
-                <Label>
-                    sports
-                </Label>
-                <Label>
-                    tours
-                </Label>
-                <Label>
-                    <FilterOutlined style={{marginRight:'.5em'}}/> Filtros
-                </Label>
-            </div>
+            <Filters/>
             <Divider style={{marginTop:'1em', marginBottom:'.5em'}}/>
             <div className='content'>
                 <div>

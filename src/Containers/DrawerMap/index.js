@@ -2,8 +2,7 @@ import React from 'react';
 import Map from '../Map';
 import styled from 'styled-components';
 import { CloseCircleFilled } from '@ant-design/icons';
-
-const placement = 'bottom';
+import Filters from '../../Containers/Filters';
 
 const MapContentWrapper = styled.div`
   .drawer{
@@ -12,11 +11,15 @@ const MapContentWrapper = styled.div`
     height: 100vh;
     bottom: -100vh;
     left: 0;
+    border-bottom: 1px solid red;
+  }
+  .content{
+
   }
   .header{
     height: 30vh;
     background: rgb(0,0,0);
-    background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(255,255,255,0) 100%);
+    background: rgba(0,0,0,.5);//linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(255,255,255,0) 100%);
   }
   .header-in{
     animation-delay: .25s;
@@ -98,7 +101,10 @@ const DrawerMap = (props) => {
         <div className={'header '+(props.open?'header-in':'header-out')} onClick={onClose}>
           <div className='close'><CloseCircleFilled /></div>
         </div>
-        <Map/>
+        <div className='content'>
+          <Filters/>
+          <Map/>
+        </div>
       </div>
     </MapContentWrapper>
   );

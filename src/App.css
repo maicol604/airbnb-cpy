@@ -3,6 +3,9 @@
     position: relative;
     z-index: 1;
 }
+body{
+    overflow-x: hidden;
+}
 :root {
     --primary: #ed3940;
     --secondary: #5a5a5a;
@@ -41,5 +44,5 @@
     margin-left: -5em;
     left: 50%;
     position: fixed;
-    bottom: 1em;
+    bottom: 2em;
 }
