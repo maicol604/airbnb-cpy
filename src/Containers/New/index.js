@@ -10,6 +10,9 @@ const NewWrapper = styled.div`
     border-radius: 1em;
     height: 50vh;
     margin-top: 2em;
+    margin-left: 8em;
+    margin-right: 8em;
+    padding: 4em;
     img{
         width: 100%;
         opacity: .75;

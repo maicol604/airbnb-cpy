@@ -1,5 +1,8 @@
 @import '~antd/dist/antd.css';
-
+.App{
+    position: relative;
+    z-index: 1;
+}
 :root {
     --primary: #ed3940;
     --secondary: #5a5a5a;
@@ -18,4 +21,25 @@
 }
 .color-primary{
     color: var(--primary);
+}
+.backtop{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    color: var(--white);
+    z-index: 1000;
+}
+.buttom-map{
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    width: 10em;
+    margin-left: -5em;
+    left: 50%;
+    position: fixed;
+    bottom: 1em;
 }

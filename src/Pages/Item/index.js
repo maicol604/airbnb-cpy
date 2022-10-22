@@ -443,9 +443,11 @@ const Item = (props) => {
                     }
                 </Row>
             </div>
-            <section>
-
-            </section>
+            <div style={{width:'100%', display:'flex', justifyContent:'center', margin:'4em 0'}}>
+                <Button secondary>
+                    Cargar mas
+                </Button>
+            </div>
         </ItemWrapper>
     )
 }

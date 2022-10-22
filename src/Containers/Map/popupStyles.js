@@ -1,6 +1,6 @@
 const popupContent = {
     textAlign: "center",
-    height: "350px",
+    height: "fit-content",
     marginTop: "30px"
   };
   const popupHead = {

@@ -8,6 +8,7 @@ import {
   RightCircleFilled
 } from '@ant-design/icons';
 import { Carousel } from 'antd';
+import { Link } from "react-router-dom";
 
 const ItemWrapper = styled.div`
     font-size: 1em;
@@ -15,6 +16,9 @@ const ItemWrapper = styled.div`
     color: #222;
     position: relative;
     transition: all .25s;
+    a{
+        color: inherit;
+    }
     .img{
         border-radius: .5em;
         overflow: hidden;
@@ -156,17 +160,19 @@ const Item = (props) => {
                     {!props.liked?<HeartTwoTone />:<HeartFilled />}
                 </div>
             </picture>
-            <div className='item-score item-text'>
-                <StarFilled style={{margin: '0'}}/>
-                <span>{props.score}</span>
-                <span className='secondary-text-color'>({props.counter})</span>
-            </div>
-            <div className='item-text'>
-                {props.title}
-            </div>
-            <div className='item-text'>
-                <span className='price'>{props.price}</span> <span className='secondary-text-color'>{props.priceBy}</span>
-            </div>
+            <Link to={props.to} onClick={props.onClick}>
+                <div className='item-score item-text'>
+                    <StarFilled style={{margin: '0'}}/>
+                    <span>{props.score}</span>
+                    <span className='secondary-text-color'>({props.counter})</span>
+                </div>
+                <div className='item-text'>
+                    {props.title}
+                </div>
+                <div className='item-text'>
+                    <span className='price'>{props.price}</span> <span className='secondary-text-color'>{props.priceBy}</span>
+                </div>
+            </Link>
         </ItemWrapper>
     )
 }

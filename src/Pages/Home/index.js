@@ -1,14 +1,11 @@
 import React from 'react';
-import { Col, Row, Divider, Carousel, BackTop, Select } from 'antd';
+import { Col, Row, Divider, Carousel, Select } from 'antd';
 
 import Item from '../../Components/Item';
 import Button from '../../Components/Button';
 import SearchWidget from '../../Containers/SearchWidget';
-import New from '../../Containers/New';
-import Footer from '../../Containers/Footer';
 import styled from 'styled-components';
 import {
-    UpOutlined,
     FilterOutlined
 } from '@ant-design/icons';
 
@@ -16,7 +13,7 @@ const items = [0,0,0,0,0,0]
 
 const HomeWrapper = styled.div`
     .content{
-        padding: 1em 4em;
+        padding: 1em 8em;
     }
     .carousel-wrapper{
         margin: 1em;
@@ -87,16 +84,6 @@ const HomeWrapper = styled.div`
         .ant-select:not(.ant-select-disabled):hover .ant-select-selector{
             border-color: var(--secondary) !important;
         }
-    }
-    .backtop{
-        width: 4em;
-        height: 4em;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--primary);
-        color: var(--white);
     }
 `;
 
@@ -228,6 +215,7 @@ const Home = () => {
                                         price={'Desde 200 €'}
                                         priceBy={'Por persona'}
                                         liked={false}
+                                        to={'/item'}
                                     />
                                 </Col>
                             ))
@@ -251,6 +239,7 @@ const Home = () => {
                                         price={'Desde 200 €'}
                                         priceBy={'Por persona'}
                                         liked={false}
+                                        to={'/item'}
                                     />
                                 </Col>
                             ))
@@ -274,6 +263,7 @@ const Home = () => {
                                         price={'Desde 200 €'}
                                         priceBy={'Por persona'}
                                         liked={false}
+                                        to={'/item'}
                                     />
                                 </Col>
                             ))
@@ -285,20 +275,7 @@ const Home = () => {
                         Cargar mas
                     </Button>
                 </div>
-                <New
-                    title={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-                    description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-                    action={'Become a host'}
-                    background={require('../../Assets/images/carousel (2).jpeg')}
-                />
             </div>
-            <Divider />
-            <Footer/>
-            <BackTop>
-                <div className='backtop'>
-                    <UpOutlined />
-                </div>
-            </BackTop>
         </HomeWrapper>
     )
 }
