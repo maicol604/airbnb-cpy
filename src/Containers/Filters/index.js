@@ -11,7 +11,7 @@ const FiltersWrapper = styled.div`
     padding: 0 2em;
     align-items: center;
     background-color: var(--white);
-    padding: 2em 4em;
+    padding: 1em 4em;
     .ant-select-selector{
         color: var(--secondary);
         border-radius: 5em !important;

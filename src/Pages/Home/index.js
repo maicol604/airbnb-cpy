@@ -51,6 +51,25 @@ const HomeWrapper = styled.div`
             }
         }
     }
+    @media (max-width: 768px) {
+        .content{
+            padding: 1em;
+
+        }
+        .carousel-wrapper{
+            .carousel-item{
+                .search-item{
+                    display: none;
+                }
+                img{
+                    width: auto;
+                }
+            }
+        }
+        .filters{
+            display: none;
+        }
+    }
 `;
 
 
@@ -69,7 +88,7 @@ const Home = () => {
                             <div className='carousel-item-title'>
                                 Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
                             </div>
-                            <div>
+                            <div className='search-item'>
                                 <SearchWidget
                                     onSearch={handleSearch}
                                 />
@@ -95,7 +114,9 @@ const Home = () => {
                     </div>
                 </Carousel>
             </div>
-            <Filters/>
+            <span className='filters'>
+                <Filters/>
+            </span>
             <Divider style={{marginTop:'1em', marginBottom:'.5em'}}/>
             <div className='content'>
                 <div>
@@ -107,7 +128,7 @@ const Home = () => {
                     <Row gutter={[16, 16]}>
                         {
                             items.map((item, i)=>(
-                                <Col span={4} key={i}>
+                                <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                     <Item
                                         score={'Nueva'}
                                         counter={100}
@@ -131,7 +152,7 @@ const Home = () => {
                     <Row gutter={[16, 16]}>
                         {
                             items.map((item, i)=>(
-                                <Col span={4} key={i}>
+                                <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                     <Item
                                         score={'Nueva'}
                                         counter={100}
@@ -155,7 +176,7 @@ const Home = () => {
                     <Row gutter={[16, 16]}>
                         {
                             [0,0,0,0,0,0,0,0,0,0,0,0].map((item, i)=>(
-                                <Col span={6} key={i}>
+                                <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                     <Item
                                         score={'Nueva'}
                                         counter={100}

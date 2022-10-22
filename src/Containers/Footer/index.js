@@ -26,8 +26,8 @@ const FooterWrapper = styled.div`
             }
         }
     }
-    .helpfull-list{
-
+    @media (max-width: 768px) {
+        padding: 2em 1em;
     }
 `;
 
@@ -35,7 +35,7 @@ const Footer = () => {
     return (
         <FooterWrapper>
             <Row gutter={[16, 16]}>
-                <Col span={12}>
+                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                     <div className='h3'>
                         Company name
                     </div>
@@ -43,7 +43,7 @@ const Footer = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium consequat neque, ac rutrum nunc hendrerit at. Vivamus ligula lorem, varius in sollicitudin a, ultrices ac urna. Duis dapibus cursus nunc semper sodales. Aliquam erat volutpat. Etiam et laoreet ante. Praesent consequat a neque malesuada ornare.
                     </p>
                 </Col>
-                <Col span={6}>
+                <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                     <div className='h3'>
                         Helpfull links
                     </div>
@@ -64,7 +64,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </Col>
-                <Col span={6}>
+                <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                     <div className='h3'>
                         Contact us
                     </div>

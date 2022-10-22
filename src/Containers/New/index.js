@@ -37,6 +37,11 @@ const NewWrapper = styled.div`
             margin-bottom: 1.5em;
         }
     }
+    @media (max-width: 768px) {
+        padding: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
 `;
 
 const New = (props) => {

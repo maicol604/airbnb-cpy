@@ -18,12 +18,12 @@ const MapContentWrapper = styled.div`
     position: relative;
     .button-list{
       position: absolute;
-      top: calc(100vh - 5em);
+      top: calc(100vh - 7em);
       z-index: 1000;
       width: 15em;
       display: flex;
       justify-content: center;
-      left: calc(50% - 5em);
+      left: calc(50% - 7.5em);
     }
   }
   .drawer-slidein{
@@ -54,6 +54,11 @@ const MapContentWrapper = styled.div`
       bottom: -100vh;
     }
   }
+  @media (max-width: 768px) {
+    .filters{
+      display: none;
+    }
+  }
 `;
 
 const DrawerMap = (props) => {
@@ -74,7 +79,9 @@ const DrawerMap = (props) => {
               Mostar la lista <UnorderedListOutlined style={{marginLeft:'.5em'}}/>
             </Button>
           </span>
-          <Filters/>
+          <span className='filters'>
+            <Filters/>
+          </span>
           <Map/>
         </div>
       </div>

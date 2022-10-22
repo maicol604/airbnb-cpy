@@ -180,6 +180,20 @@ const ItemWrapper = styled.div`
             width: 100%;
         }
     }
+    @media (max-width: 768px) {
+        padding: 1em;
+        .item{
+            .share-information{
+                >div{
+                    .action{
+                        .text{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
 `;
 
 const { RangePicker } = DatePicker;
@@ -212,28 +226,28 @@ const Item = (props) => {
                         <span><StarFilled style={{marginRight:'.5em'}}/></span> 0,00 <a href='#'>Madrid,España</a>
                     </div>
                     <div>
-                        <div className='action'><span><ShareAltOutlined  style={{marginRight:'.5em'}}/></span> Compartir</div>
-                        <div className='action' style={{marginLeft:'1em'}}><span><HeartOutlined  style={{marginRight:'.5em'}}/></span> Compartir</div>
+                        <div className='action'><span><ShareAltOutlined  style={{marginRight:'.5em'}}/></span> <span className='text'>Compartir</span></div>
+                        <div className='action' style={{marginLeft:'1em'}}><span><HeartOutlined  style={{marginRight:'.5em'}}/></span> <span className='text'>Compartir</span></div>
                     </div>
                 </div>
                 <div>
                     <Row gutter={[0, 0]}>
-                        <Col span={6}>
+                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                             <div className='img-container'>
                                 <img src={'https://placeimg.com/500/701/any'} alt=''/>
                             </div>
                         </Col>
-                        <Col span={6}>
+                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                             <div className='img-container'>
                                 <img src={'https://placeimg.com/501/700/any'} alt=''/>
                             </div>
                         </Col>
-                        <Col span={6}>
+                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                             <div className='img-container'>
                                 <img src={'https://placeimg.com/501/701/any'} alt=''/>
                             </div>
                         </Col>
-                        <Col span={6}>
+                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                             <div className='img-container show-more'>
                                 <div className='img-icon'>
                                     <PictureOutlined style={{width:'40%'}}/>
@@ -246,7 +260,7 @@ const Item = (props) => {
                 <Divider/>
                 <section className='content'>
                     <Row gutter={[16, 16]}>
-                        <Col span={16}>
+                        <Col  xs={24} sm={24} md={16} lg={16} xl={16}>
                             <div className='user-info'>
                                 <Avatar 
                                     size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
@@ -277,7 +291,7 @@ const Item = (props) => {
                             </article>
                             <Divider/>
                         </Col>
-                        <Col span={8}>
+                        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                             <div className='booking'>
                                 <div className='price'>
                                     <div><span>Desde 00€</span> por persona</div>
@@ -352,7 +366,7 @@ const Item = (props) => {
                             Lorem ipsum dolor sit amet
                         </span>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                         <span className='bold subtitle'>
                             Lorem ipsum dolor sit amet
                         </span>
@@ -366,7 +380,7 @@ const Item = (props) => {
                             Lorem ipsum dolor sit amet
                         </p>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                         <span className='bold subtitle'>
                             Lorem ipsum dolor sit amet
                         </span>
@@ -380,7 +394,7 @@ const Item = (props) => {
                             Lorem ipsum dolor sit amet
                         </p>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                         <span className='bold subtitle'>
                             Lorem ipsum dolor sit amet
                         </span>
@@ -399,22 +413,22 @@ const Item = (props) => {
                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
                 </div>
                 <Row gutter={[64, 32]}>
-                    <Col span={12}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                         <Comment
                             more
                         />
                     </Col>
-                    <Col span={12}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                         <Comment
                         
                         />
                     </Col>
-                    <Col span={12}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                         <Comment
                         
                         />
                     </Col>
-                    <Col span={12}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                         <Comment
                             more
                         />
@@ -429,7 +443,7 @@ const Item = (props) => {
                 <Row gutter={[16, 16]}>
                     {
                         [0,0,0,0].map((item, i)=>(
-                            <Col span={6} key={i}>
+                            <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                 <ItemComponent
                                     score={'Nueva'}
                                     counter={100}

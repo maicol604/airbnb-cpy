@@ -40,7 +40,7 @@ function App() {
       </BackTop>
       <div className='buttom-map'>
         <DrawerMap open={open} onCancel={handleClick}>
-          <Buttom primary onClick={handleClick}>
+          <Buttom secondary onClick={handleClick}>
             Mapa
           </Buttom>
         </DrawerMap>
