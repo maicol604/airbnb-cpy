@@ -1,8 +1,9 @@
 import React from 'react';
 import Map from '../Map';
 import styled from 'styled-components';
-import { CloseCircleFilled } from '@ant-design/icons';
-import Filters from '../../Containers/Filters';
+import { UnorderedListOutlined } from '@ant-design/icons';
+import Filters from '../Filters';
+import Button from '../../Components/Button';
 
 const MapContentWrapper = styled.div`
   .drawer{
@@ -14,23 +15,16 @@ const MapContentWrapper = styled.div`
     border-bottom: 1px solid red;
   }
   .content{
-
-  }
-  .header{
-    height: 30vh;
-    background: rgb(0,0,0);
-    background: rgba(0,0,0,.5);//linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(255,255,255,0) 100%);
-  }
-  .header-in{
-    animation-delay: .25s;
-    animation-duration: .25s;
-    animation-name: headerin;
-    animation-fill-mode: both;
-  }
-  .header-out{
-    animation-duration: .25s;
-    animation-name: headerout;
-    animation-fill-mode: both;
+    position: relative;
+    .button-list{
+      position: absolute;
+      top: calc(100vh - 5em);
+      z-index: 1000;
+      width: 15em;
+      display: flex;
+      justify-content: center;
+      left: calc(50% - 5em);
+    }
   }
   .drawer-slidein{
     animation-duration: .25s;
@@ -60,30 +54,6 @@ const MapContentWrapper = styled.div`
       bottom: -100vh;
     }
   }
-  @keyframes headerin {
-    from {
-      opacity: 0;
-    }
-    to {
-      bottom: 1;
-    }
-  }
-  @keyframes headerout {
-    from {
-      bottom: 1;
-    }
-    to {
-      bottom: 0;
-    }
-  }
-  .close{
-    position: absolute;
-    right: 1em;
-    top: 1em;
-    color: var(--white);
-    font-size: 2em;
-    cursor: pointer;
-  }
 `;
 
 const DrawerMap = (props) => {
@@ -98,10 +68,12 @@ const DrawerMap = (props) => {
         {props.children}
       </>
       <div className={'drawer '+(props.open?'drawer-slidein':'drawer-slideout')}>
-        <div className={'header '+(props.open?'header-in':'header-out')} onClick={onClose}>
-          <div className='close'><CloseCircleFilled /></div>
-        </div>
         <div className='content'>
+          <span className='button-list'>
+            <Button onClick={onClose} secondary>
+              Mostar la lista <UnorderedListOutlined style={{marginLeft:'.5em'}}/>
+            </Button>
+          </span>
           <Filters/>
           <Map/>
         </div>
