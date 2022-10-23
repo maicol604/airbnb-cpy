@@ -6,6 +6,7 @@ import Button from '../../Components/Button';
 import SearchWidget from '../../Containers/SearchWidget';
 import Filters from '../../Containers/Filters';
 import styled from 'styled-components';
+import { SearchOutlined, ControlOutlined } from '@ant-design/icons'
 
 const items = [0,0,0,0,0,0]
 
@@ -26,6 +27,9 @@ const HomeWrapper = styled.div`
             display: flex !important;
             justify-content: center;
             align-items: center;
+            .search-item-mobile{
+                display: none;
+            }
             .carousel-content{
                 position: relative;
                 background-color: transparent;
@@ -41,6 +45,7 @@ const HomeWrapper = styled.div`
                         text-decoration: underline var(--primary) 5px;
                     }
                 }
+
             }
             img{
                 width: 100%;
@@ -54,12 +59,21 @@ const HomeWrapper = styled.div`
     @media (max-width: 768px) {
         .content{
             padding: 1em;
-
         }
         .carousel-wrapper{
             .carousel-item{
+                .carousel-content{
+                    padding: 1em;
+                    .carousel-item-title{
+                        font-size: 1.5em;
+                        width: 100%;
+                    }
+                }
                 .search-item{
                     display: none;
+                }
+                .search-item-mobile{
+                    display: block;
                 }
                 img{
                     width: auto;
@@ -72,6 +86,62 @@ const HomeWrapper = styled.div`
     }
 `;
 
+const SearchMobileWrapper = styled.div`
+    padding: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--white);
+    border-radius: 5em;
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .control{
+        width: 2.5em;
+        height: 2.5em;
+        border: 1px solid var(--secondary);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: rotate(90deg);
+    }
+    .search-icon{
+        margin-left: .5em;
+    }
+    .text{
+        font-size: .75em;
+        display: flex;
+        flex-direction: column;
+        .main{
+            font-size: 700;
+            color: var(--bold-color);
+        }
+        .secondary{
+            font-size: .75em;
+            color: var(--secondary);
+        }
+    }
+`;
+
+const SearchMobile = () => {
+    return (
+        <>
+            <SearchMobileWrapper>
+                <div className='search-icon'>
+                    <SearchOutlined />
+                </div>
+                <div className='text'>
+                    <span className='main'>Lorem ipsum dolor sit amet</span>
+                    <span className='secondary'>Lorem ipsum dolor sit amet</span>
+                </div>
+                <div className='control'>
+                    <ControlOutlined />
+                </div>
+            </SearchMobileWrapper>
+        </>
+    )
+}
 
 const Home = () => {
 
@@ -92,6 +162,9 @@ const Home = () => {
                                 <SearchWidget
                                     onSearch={handleSearch}
                                 />
+                            </div>
+                            <div className='search-item-mobile'>
+                                <SearchMobile/>
                             </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (2).jpeg')} alt=''/>
