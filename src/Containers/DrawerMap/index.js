@@ -54,7 +54,29 @@ const MapContentWrapper = styled.div`
       bottom: -100vh;
     }
   }
+  .filters-mobile{
+    background-color: var(--white);
+    padding: 1em .5em;
+    display: none;
+    .labels{
+        padding: 0 1em;
+        font-weight: 600;
+        //font-size: 1.25em;
+        color: var(--secondary);
+        .label{
+            padding: .25em 1em;
+            border-radius: 5em;
+            border: 1px solid var(--secondary);
+            &:nth-child(1n){
+                margin-right: .25em;
+            }
+        }
+    }
+  }
   @media (max-width: 768px) {
+    .filters-mobile{
+      display: block;
+    }
     .filters{
       display: none;
     }
@@ -82,6 +104,13 @@ const DrawerMap = (props) => {
           <span className='filters'>
             <Filters/>
           </span>
+          <div className='filters-mobile'>
+            <div className='labels'>
+              <span className='label'>Tipo de actividad</span>
+              <span className='label'>Precio</span>
+              <span className='label'>Idiomas</span>
+            </div>
+          </div>
           <Map/>
         </div>
       </div>
