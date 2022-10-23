@@ -60,11 +60,12 @@ const HomeWrapper = styled.div`
     @media (max-width: 768px) {
         .content{
             padding: 1em;
+            padding-top: 0;
         }
         .carousel-wrapper{
-            height: 55vh;
+            height: 50vh;
             .carousel-item{
-                height: 55vh;
+                height: 50vh;
                 .carousel-content{
                     padding: 1em;
                     .carousel-item-title{
@@ -90,7 +91,8 @@ const HomeWrapper = styled.div`
     }
     
     .labels{
-        padding: 1em;
+        padding: 0em 1em;
+        font-weight: 600;
         .label{
             padding: .25em 1em;
             border-radius: 5em;
