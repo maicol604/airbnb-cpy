@@ -72,9 +72,6 @@ const HomeWrapper = styled.div`
                 .search-item{
                     display: none;
                 }
-                .search-item-mobile{
-                    display: block;
-                }
                 img{
                     width: auto;
                 }
@@ -84,18 +81,37 @@ const HomeWrapper = styled.div`
             display: none;
         }
     }
+    
+    .search-item-mobile{
+        display: block;
+    }
+    
+    .labels{
+        padding: 1em;
+        .label{
+            padding: .25em 1em;
+            border-radius: 5em;
+            border: 1px solid var(--secondary);
+            &:nth-child(1n){
+                margin-right: 1em;
+            }
+        }
+    }
 `;
 
 const SearchMobileWrapper = styled.div`
     padding: 1em;
-    width: 100%;
+    width: calc(100% - 2em);
     box-sizing: border-box;
     background-color: var(--white);
     border-radius: 5em;
-    margin-top: 2em;
+    margin-top: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid var(--secondary);
+    margin: 0 1em;
+    box-sizing: border-box;
     .control{
         width: 2.5em;
         height: 2.5em;
@@ -163,9 +179,6 @@ const Home = () => {
                                     onSearch={handleSearch}
                                 />
                             </div>
-                            <div className='search-item-mobile'>
-                                <SearchMobile/>
-                            </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (2).jpeg')} alt=''/>
                     </div>
@@ -186,6 +199,14 @@ const Home = () => {
                         <img src={require('../../Assets/images/carousel (3).jpeg')} alt=''/>
                     </div>
                 </Carousel>
+            </div>
+            <div className='search-item-mobile'>
+                <SearchMobile/>
+                <div className='labels'>
+                    <span className='label'>Label</span>
+                    <span className='label'>Label</span>
+                    <span className='label'>Label</span>
+                </div>
             </div>
             <span className='filters'>
                 <Filters/>
