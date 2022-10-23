@@ -27,9 +27,6 @@ const HomeWrapper = styled.div`
             display: flex !important;
             justify-content: center;
             align-items: center;
-            .search-item-mobile{
-                display: none;
-            }
             .carousel-content{
                 position: relative;
                 background-color: transparent;
@@ -56,12 +53,18 @@ const HomeWrapper = styled.div`
             }
         }
     }
+    
+    .search-item-mobile{
+        display: none;
+    }
     @media (max-width: 768px) {
         .content{
             padding: 1em;
         }
         .carousel-wrapper{
+            height: 55vh;
             .carousel-item{
+                height: 55vh;
                 .carousel-content{
                     padding: 1em;
                     .carousel-item-title{
@@ -105,12 +108,12 @@ const SearchMobileWrapper = styled.div`
     box-sizing: border-box;
     background-color: var(--white);
     border-radius: 5em;
-    margin-top: 1em;
+    margin-top: 2em;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 1px solid var(--secondary);
-    margin: 0 1em;
+    //margin: 0 1em;
     box-sizing: border-box;
     .control{
         width: 2.5em;
@@ -179,6 +182,9 @@ const Home = () => {
                                     onSearch={handleSearch}
                                 />
                             </div>
+                            <div className='search-item-mobile'>
+                                <SearchMobile/>
+                            </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (2).jpeg')} alt=''/>
                     </div>
@@ -201,7 +207,6 @@ const Home = () => {
                 </Carousel>
             </div>
             <div className='search-item-mobile'>
-                <SearchMobile/>
                 <div className='labels'>
                     <span className='label'>Label</span>
                     <span className='label'>Label</span>
