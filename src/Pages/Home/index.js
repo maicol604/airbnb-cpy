@@ -53,7 +53,6 @@ const HomeWrapper = styled.div`
             }
         }
     }
-    
     .search-item-mobile{
         display: none;
     }
@@ -65,11 +64,13 @@ const HomeWrapper = styled.div`
         .carousel-wrapper{
             height: 50vh;
             .carousel-item{
-                height: 50vh;
+                min-height: 50vh;
+                align-items: flex-end;
+                padding-bottom: 3em;
                 .carousel-content{
                     padding: 1em;
                     .carousel-item-title{
-                        font-size: 1.5em;
+                        font-size: 2em;
                         width: 100%;
                     }
                 }
@@ -84,29 +85,30 @@ const HomeWrapper = styled.div`
         .filters{
             display: none;
         }
-    }
-    
-    .search-item-mobile{
-        display: block;
+        .search-item-mobile{
+            display: block;
+        }
     }
     
     .labels{
-        padding: 0em 1em;
+        padding: 0 1em;
         font-weight: 600;
+        //font-size: 1.25em;
+        color: var(--secondary);
         .label{
             padding: .25em 1em;
             border-radius: 5em;
             border: 1px solid var(--secondary);
             &:nth-child(1n){
-                margin-right: 1em;
+                margin-right: .25em;
             }
         }
     }
 `;
 
 const SearchMobileWrapper = styled.div`
-    padding: 1em;
-    width: calc(100% - 2em);
+    padding: .5em 1em;
+    width: calc(100% - 0em);
     box-sizing: border-box;
     background-color: var(--white);
     border-radius: 5em;
@@ -210,9 +212,9 @@ const Home = () => {
             </div>
             <div className='search-item-mobile'>
                 <div className='labels'>
-                    <span className='label'>Label</span>
-                    <span className='label'>Label</span>
-                    <span className='label'>Label</span>
+                    <span className='label'>Tipo de actividad</span>
+                    <span className='label'>Precio</span>
+                    <span className='label'>Idiomas</span>
                 </div>
             </div>
             <span className='filters'>
