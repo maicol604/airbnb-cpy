@@ -38,21 +38,26 @@ const Comment = (props) => {
                 <Avatar 
                     size={'large'}
                     style={{backgroundColor:'var(--primary)', color:'var(--white)'}}
+                    src={props.userImage}
                 >
-                    U    
+                    {
+                        props.userName.charAt(0)
+                    }
                 </Avatar>
                 <div className='user-data'>
-                    <span>John Doe</span>
-                    <span className='date'>Date</span>
+                    <span>{props.userName}</span>
+                    <span className='date'>{props.date}</span>
                 </div>
             </div>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis, diam nec egestas congue, dolor odio lacinia ipsum, quis imperdiet ante eros a leo. Sed luctus urna consectetur dui mollis pretium. Sed commodo, nunc ut pretium aliquam, erat eros porta nisl, at tempus dolor elit eu nisi. Vestibulum feugiat, lorem nec lobortis bibendum, ligula arcu gravida lectus, sit amet pellentesque ante metus ut nisi. Fusce at tortor justo. In iaculis justo convallis mollis commodo. Sed pretium lectus et tristique aliquet. Sed purus augue, aliquam quis eros vitae, tincidunt efficitur magna. 
+                {props.comment}
             </p>
             {
                 showMore?
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis, diam nec egestas congue, dolor odio lacinia ipsum, quis imperdiet ante eros a leo. Sed luctus urna consectetur dui mollis pretium. Sed commodo, nunc ut pretium aliquam, erat eros porta nisl, at tempus dolor elit eu nisi. Vestibulum feugiat, lorem nec lobortis bibendum, ligula arcu gravida lectus, sit amet pellentesque ante metus ut nisi. Fusce at tortor justo. In iaculis justo convallis mollis commodo. Sed pretium lectus et tristique aliquet. Sed purus augue, aliquam quis eros vitae, tincidunt efficitur magna. 
+                    {
+                        props.more
+                    }
                 </p>
                 :
                 <>

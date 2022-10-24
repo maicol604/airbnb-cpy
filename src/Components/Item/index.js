@@ -25,7 +25,7 @@ const ItemWrapper = styled.div`
         display: flex;
         position: relative;
         img{
-            width: 100%;
+            height: 15em;
         }
         .heart{
             position: absolute;
@@ -141,18 +141,13 @@ const Item = (props) => {
                     </div>
                     <div className='carousel-container'>
                         <Carousel ref={eventHandler}>
-                            <div>
-                                <img src={'https://placeimg.com/501/700/any'} alt=''/>
-                            </div>
-                            <div>
-                                <img src={'https://placeimg.com/500/701/any'} alt=''/>
-                            </div>
-                            <div>
-                                <img src={'https://placeimg.com/501/700/any'} alt=''/>
-                            </div>
-                            <div>
-                                <img src={'https://placeimg.com/501/701/any'} alt=''/>
-                            </div>
+                            {
+                                props.images.map((i, j)=>
+                                    <div key={j}>
+                                        <img src={i} alt=''/>
+                                    </div>
+                                )
+                            }
                         </Carousel>
                     </div>
                 </div>
@@ -164,7 +159,7 @@ const Item = (props) => {
                 <div className='item-score item-text'>
                     <StarFilled style={{margin: '0'}}/>
                     <span>{props.score}</span>
-                    <span className='secondary-text-color'>({props.counter})</span>
+                    <span className='secondary-text-color'>({props.reviewers})</span>
                 </div>
                 <div className='item-text'>
                     {props.title}
@@ -175,6 +170,10 @@ const Item = (props) => {
             </Link>
         </ItemWrapper>
     )
+}
+
+Item.defaultProps = {
+    images:[],
 }
 
 export default Item;

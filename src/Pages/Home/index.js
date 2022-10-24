@@ -6,7 +6,9 @@ import Button from '../../Components/Button';
 import SearchWidget from '../../Containers/SearchWidget';
 import Filters from '../../Containers/Filters';
 import styled from 'styled-components';
-import { SearchOutlined, ControlOutlined } from '@ant-design/icons'
+import { SearchOutlined, ControlOutlined } from '@ant-design/icons';
+
+import { GetExperiences } from '../../MockServer/experiences';
 
 const items = [0,0,0,0,0,0]
 
@@ -98,7 +100,7 @@ const HomeWrapper = styled.div`
         .label{
             padding: .25em 1em;
             border-radius: 5em;
-            border: 1px solid var(--secondary);
+            border: 1px solid rgba(0,0,0,.25);
             &:nth-child(1n){
                 margin-right: .25em;
             }
@@ -168,6 +170,12 @@ const SearchMobile = () => {
 
 const Home = () => {
 
+    const [data, setData] = React.useState([]);
+
+    React.useEffect(()=>{
+        setData(GetExperiences());
+    },[])
+
     const handleSearch = (e) => {
         console.log(e)
     }
@@ -230,16 +238,18 @@ const Home = () => {
                 <div>
                     <Row gutter={[16, 16]}>
                         {
-                            items.map((item, i)=>(
+                            data.map((item, i)=>(
                                 <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                     <Item
-                                        score={'Nueva'}
+                                        images={item.images}
+                                        score={item.valuation}
+                                        reviewers={item.reviewers}
                                         counter={100}
-                                        title={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-                                        price={'Desde 200 €'}
-                                        priceBy={'Por persona'}
+                                        title={item.title}
+                                        price={item.price}
+                                        priceBy={item.price_by}
                                         liked={false}
-                                        to={'/item'}
+                                        to={'/item/'+item.id}
                                     />
                                 </Col>
                             ))
@@ -254,7 +264,7 @@ const Home = () => {
                 <div>
                     <Row gutter={[16, 16]}>
                         {
-                            items.map((item, i)=>(
+                            [].map((item, i)=>(
                                 <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                     <Item
                                         score={'Nueva'}
@@ -278,7 +288,7 @@ const Home = () => {
                 <div>
                     <Row gutter={[16, 16]}>
                         {
-                            [0,0,0,0,0,0,0,0,0,0,0,0].map((item, i)=>(
+                            [].map((item, i)=>(
                                 <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                     <Item
                                         score={'Nueva'}
@@ -294,11 +304,11 @@ const Home = () => {
                         }
                     </Row>
                 </div>
-                <div style={{width:'100%', display:'flex', justifyContent:'center', margin:'4em 0'}}>
+                {/* <div style={{width:'100%', display:'flex', justifyContent:'center', margin:'4em 0'}}>
                     <Button secondary>
                         Cargar mas
                     </Button>
-                </div>
+                </div> */}
             </div>
         </HomeWrapper>
     )

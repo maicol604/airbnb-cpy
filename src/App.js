@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="item" element={<Item/>} />
+        <Route path="/item/:id" element={<Item/>} />
       </Routes>
       <New
         title={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}

@@ -66,7 +66,7 @@ const MapContentWrapper = styled.div`
         .label{
             padding: .25em 1em;
             border-radius: 5em;
-            border: 1px solid var(--secondary);
+            border: 1px solid rgba(0,0,0,.25);
             &:nth-child(1n){
                 margin-right: .25em;
             }

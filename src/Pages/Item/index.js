@@ -5,13 +5,16 @@ import Button from '../../Components/Button';
 import Comment from '../../Components/Comment';
 import Map from '../../Containers/Map';
 import { Col, Row, Divider, DatePicker, Breadcrumb, Avatar } from 'antd';
+import { useParams } from 'react-router-dom';
+import { GetExperience } from '../../MockServer/experiences';
 import {
     StarFilled,
     ShareAltOutlined,
     HeartOutlined,
     SafetyCertificateFilled,
     CalendarOutlined,
-    PictureOutlined
+    PictureOutlined,
+    LeftCircleFilled
 } from '@ant-design/icons';
 
 const ItemWrapper = styled.div`
@@ -154,6 +157,7 @@ const ItemWrapper = styled.div`
     .img-container{
         width: 100%;
         background-color: #000;
+        overflow: hidden;
         &.show-more{
             display: flex;
             justify-content: center;
@@ -177,11 +181,17 @@ const ItemWrapper = styled.div`
         }
         img{
             transition: all .25s;
-            width: 100%;
+            //width: 100%;
+            height: 60vh;
         }
     }
     @media (max-width: 768px) {
         padding: 1em;
+        .img-container{
+            img{
+                height: 25vh;
+            }
+        }
         .item{
             .share-information{
                 >div{
@@ -199,8 +209,20 @@ const ItemWrapper = styled.div`
 const { RangePicker } = DatePicker;
 
 const Item = (props) => {
+
+    const params = useParams();
+    const [data, setData] = React.useState(null);
+
+    React.useEffect(()=>{
+        setData(GetExperience(params.id));
+    },[])
+    
     return (
+        data?
         <ItemWrapper>
+            <div style={{position:'fixed', top:'.25em', left:'.5em', fontSize:'3em', color:'var(--primary)'}}>
+                <a href='/' style={{color:'inherit'}}><LeftCircleFilled /></a>
+            </div>
             <section>
                 <Breadcrumb>
                     <Breadcrumb.Item>
@@ -219,7 +241,7 @@ const Item = (props) => {
             </section>
             <article className='item'>
                 <span className='h3'>
-                    Amazing pictures in the herat of Madrid
+                    {data.title}
                 </span>
                 <div className='share-information'>
                     <div>
@@ -227,34 +249,30 @@ const Item = (props) => {
                     </div>
                     <div>
                         <div className='action'><span><ShareAltOutlined  style={{marginRight:'.5em'}}/></span> <span className='text'>Compartir</span></div>
-                        <div className='action' style={{marginLeft:'1em'}}><span><HeartOutlined  style={{marginRight:'.5em'}}/></span> <span className='text'>Compartir</span></div>
+                        <div className='action' style={{marginLeft:'1em'}}><span><HeartOutlined  style={{marginRight:'.5em'}}/></span> <span className='text'>Guardar</span></div>
                     </div>
                 </div>
                 <div>
                     <Row gutter={[0, 0]}>
-                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div className='img-container'>
-                                <img src={'https://placeimg.com/500/701/any'} alt=''/>
-                            </div>
-                        </Col>
-                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div className='img-container'>
-                                <img src={'https://placeimg.com/501/700/any'} alt=''/>
-                            </div>
-                        </Col>
-                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div className='img-container'>
-                                <img src={'https://placeimg.com/501/701/any'} alt=''/>
-                            </div>
-                        </Col>
-                        <Col xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div className='img-container show-more'>
-                                <div className='img-icon'>
-                                    <PictureOutlined style={{width:'40%'}}/>
-                                </div>
-                                <img src={'https://placeimg.com/501/702/any'} alt=''/>
-                            </div>
-                        </Col>
+                        {
+                            data.images.map((item, index)=>(
+                                index<(data.images.length-1)?
+                                <Col xs={12} sm={12} md={6} lg={6} xl={6} key={index}>
+                                    <div className='img-container'>
+                                        <img src={item} alt=''/>
+                                    </div>
+                                </Col>
+                                :
+                                <Col xs={12} sm={12} md={6} lg={6} xl={6} key={index}>
+                                    <div className='img-container show-more'>
+                                        <div className='img-icon'>
+                                            <PictureOutlined style={{width:'40%'}}/>
+                                        </div>
+                                        <img src={item} alt=''/>
+                                    </div>
+                                </Col>
+                            ))
+                        }
                     </Row>
                 </div>
                 <Divider/>
@@ -265,28 +283,34 @@ const Item = (props) => {
                                 <Avatar 
                                     size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
                                     style={{backgroundColor:'var(--primary)', color:'var(--white)'}}
+                                    src={data.user.avatar}
                                 >
                                     U
                                 </Avatar>
                                 <div style={{marginLeft:'1em'}}>
-                                    <div className='h3' style={{marginBottom:'.25em', marginTop:'0'}}>Lorem ipsum dolor sit amet</div>
-                                    <div>Lorem ipsum dolor sit amet</div>
+                                    <div className='h3' style={{marginBottom:'.25em', marginTop:'0'}}>{data.user.name}</div>
+                                    <div>{data.user.extra_information}</div>
                                 </div>
                             </div>
                             <div style={{display:'flex', marginBottom:'1em'}}>
-                                <div><span className='icon'><StarFilled style={{marginRight:'.5em'}}/></span>12 evaluaciones</div>
-                                <div><span className='icon'><SafetyCertificateFilled style={{marginRight:'.5em', marginLeft:'1em'}}/></span>Identidad verificada</div>
+                                <div><span className='icon'><StarFilled style={{marginRight:'.5em'}}/></span>{data.user.previews} evaluaciones</div>
+                                {
+                                    data.user.verified?
+                                    <div><span className='icon'><SafetyCertificateFilled style={{marginRight:'.5em', marginLeft:'1em'}}/></span>Identidad verificada</div>
+                                    :
+                                    <></>
+                                }
                             </div>
                             <article>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis, diam nec egestas congue, dolor odio lacinia ipsum, quis imperdiet ante eros a leo. Sed luctus urna consectetur dui mollis pretium. Sed commodo, nunc ut pretium aliquam, erat eros porta nisl, at tempus dolor elit eu nisi. Vestibulum feugiat, lorem nec lobortis bibendum, ligula arcu gravida lectus, sit amet pellentesque ante metus ut nisi. Fusce at tortor justo. In iaculis justo convallis mollis commodo. Sed pretium lectus et tristique aliquet. Sed purus augue, aliquam quis eros vitae, tincidunt efficitur magna. 
+                                    {data.user.description}
                                 </p>
                             </article>
                             <Divider/>
                             <article>
-                                <div className='h3' style={{marginBottom:'.25em', marginTop:'0'}}>Lorem ipsum dolor sit amet</div>
+                                <div className='h3' style={{marginBottom:'.25em', marginTop:'0'}}>Qué harás</div>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis, diam nec egestas congue, dolor odio lacinia ipsum, quis imperdiet ante eros a leo. Sed luctus urna consectetur dui mollis pretium. Sed commodo, nunc ut pretium aliquam, erat eros porta nisl, at tempus dolor elit eu nisi. Vestibulum feugiat, lorem nec lobortis bibendum, ligula arcu gravida lectus, sit amet pellentesque ante metus ut nisi. Fusce at tortor justo. In iaculis justo convallis mollis commodo. Sed pretium lectus et tristique aliquet. Sed purus augue, aliquam quis eros vitae, tincidunt efficitur magna. 
+                                    {data.content.what_will_you_do}    
                                 </p>
                             </article>
                             <Divider/>
@@ -294,7 +318,7 @@ const Item = (props) => {
                         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                             <div className='booking'>
                                 <div className='price'>
-                                    <div><span>Desde 00€</span> por persona</div>
+                                    <div><span>{data.price}</span> {data.price_by}</div>
                                     <a>Mostrar precios</a>
                                 </div>
                                 <div className='date-picker'>
@@ -307,7 +331,7 @@ const Item = (props) => {
                                         <a href='#'>Lorem ipsum dolor sit amet</a>
                                     </div>
                                     <div className='end'>
-                                        <div><span className='price bold'>46€</span>Lorem ipsum</div>
+                                        <div><span className='price bold'>0€ </span>por persona</div>
                                         <Button primary>
                                             Elegir
                                         </Button>
@@ -321,7 +345,7 @@ const Item = (props) => {
                                         <a href='#'>Lorem ipsum dolor sit amet</a>
                                     </div>
                                     <div className='end'>
-                                        <div><span className='price bold'>46€</span>Lorem ipsum</div>
+                                        <div><span className='price bold'>3€ </span>por persona</div>
                                         <Button primary>
                                             Elegir
                                         </Button>
@@ -336,15 +360,15 @@ const Item = (props) => {
                                 <div className='booking-options'>
                                     <CalendarOutlined />
                                     <div>
-                                        <div className='bold'>Lorem ipsum dolor sit amet</div>
-                                        <div className='small'>Lorem ipsum dolor sit amet</div>
+                                        <div className='bold'>cancelación flexible</div>
+                                        <div className='small'></div>
                                     </div>
                                 </div>
                                 <div className='booking-options'>
                                     <CalendarOutlined />
                                     <div>
-                                        <div className='bold'>Lorem ipsum dolor sit amet</div>
-                                        <div className='small'>Lorem ipsum dolor sit amet</div>
+                                        <div className='bold'>Inmersión cultural*</div>
+                                        <div className='small'></div>
                                     </div>
                                 </div>
                             </div>
@@ -356,83 +380,78 @@ const Item = (props) => {
                 <div className='h3' style={{marginTop:'0'}}>
                     Donde iras
                 </div>
-                <Map/>
+                <Map
+                    center={data.content.location}
+                />
             </section>
             <Divider/>
             <section>
                 <Row gutter={[16, 16]}>
                     <Col span={24}>
                         <span className='bold title'>
-                            Lorem ipsum dolor sit amet
+                            Que debes saber
                         </span>
                     </Col>
                     <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                         <span className='bold subtitle'>
-                            Lorem ipsum dolor sit amet
+                            Requisitos para los viajeros
                         </span>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
+                        {
+                            data.content.what_are_you_going_to_do.map((item, index)=>(
+                                <p key={index}>
+                                    {item}
+                                </p>
+                            ))
+                        }
                     </Col>
                     <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                         <span className='bold subtitle'>
-                            Lorem ipsum dolor sit amet
+                            Que hay que llevar
                         </span>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
+                        {
+                            data.content.what_to_bring.map((item, index)=>(
+                                <p key={index}>
+                                    {item}
+                                </p>
+                            ))
+                        }
                     </Col>
                     <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                         <span className='bold subtitle'>
-                            Lorem ipsum dolor sit amet
+                            Politica de cancelacion
                         </span>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam augue nunc, consequat at blandit ac, condimentum non odio. Nullam eu ultricies eros, lacinia feugiat tellus. Quisque pharetra magna non nibh tincidunt lobortis. Etiam rutrum mi augue, ut sagittis arcu congue at. Praesent venenatis sem id augue varius dignissim.
-                        </p>
+                        {
+                            data.content.cancellation_policy.map((item, index)=>(
+                                <p key={index}>
+                                    {item}
+                                </p>
+                            ))
+                        }
                     </Col>
                 </Row>
             </section>
             <Divider/>
             <section>
                 <div className='h3' style={{marginTop:'0', marginBottom:'0'}}>
-                    <StarFilled style={{marginRight:'.5em'}}/> 00,00 (00 evaluaciones)
+                    <StarFilled style={{marginRight:'.5em'}}/> {data.content.comments_count} ({data.content.comments_reviewers} evaluaciones)
                 </div>
                 <div style={{opacity:'.5', marginBottom:'2em'}}>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                    <span>Mas informacion sobre las evaluaciones</span>
                 </div>
                 <Row gutter={[64, 32]}>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                        <Comment
-                            more
-                        />
-                    </Col>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                        <Comment
-                        
-                        />
-                    </Col>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                        <Comment
-                        
-                        />
-                    </Col>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                        <Comment
-                            more
-                        />
-                    </Col>
+                    {
+                        data.content.comments.map((item,index)=>(
+                            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                                <Comment
+                                    //more
+                                    userName={item.user.name}
+                                    comment={item.comment}
+                                    date={''}
+                                    userImage={null}
+                                />
+                            </Col>
+                        ))
+                    }
                 </Row>
             </section>
             <Divider/>
@@ -442,7 +461,7 @@ const Item = (props) => {
                 </div>
                 <Row gutter={[16, 16]}>
                     {
-                        [0,0,0,0].map((item, i)=>(
+                        data.similar.map((item, i)=>(
                             <Col xs={12} sm={12} md={4} lg={4} xl={4} key={i}>
                                 <ItemComponent
                                     score={'Nueva'}
@@ -457,12 +476,14 @@ const Item = (props) => {
                     }
                 </Row>
             </div>
-            <div style={{width:'100%', display:'flex', justifyContent:'center', margin:'4em 0'}}>
+            {/* <div style={{width:'100%', display:'flex', justifyContent:'center', margin:'4em 0'}}>
                 <Button secondary>
                     Cargar mas
                 </Button>
-            </div>
+            </div> */}
         </ItemWrapper>
+        :
+        <></>
     )
 }
 

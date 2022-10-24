@@ -8,20 +8,19 @@ import { useNavigate } from "react-router-dom";
 
 const center = [40.4166, -3.7025];
 
-const Map2 = () => {
-  const navigate = useNavigate();
+const Map2 = (props) => {
 
   const onRedirect = (e) => {
     window.location.href="/item";
   }
 
   return (
-    <Map style={{ width: "100%", height: "100vh", zIndex:'1' }} center={center} zoom={13}>
+    <Map style={{ width: "100%", height: "100vh", zIndex:'1' }} center={props.center} zoom={13}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={center} icon={defaultMarker} alt='hello'>
+      <Marker position={props.center} icon={defaultMarker} alt='hello'>
         <Popup className="request-popup">
           <div style={popupContent}>
             <div style={{width:'10vw'}}>
@@ -42,5 +41,9 @@ const Map2 = () => {
     </Map>
   );
 };
+
+Map2.defaultProps = {
+  center:center,
+}
 
 export default Map2;
