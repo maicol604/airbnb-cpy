@@ -59,18 +59,19 @@ const MapContentWrapper = styled.div`
     padding: 1em .5em;
     display: none;
     .labels{
-        padding: 0 1em;
-        font-weight: 600;
-        //font-size: 1.25em;
-        color: var(--secondary);
-        .label{
-            padding: .25em 1em;
-            border-radius: 5em;
-            border: 1px solid rgba(0,0,0,.25);
-            &:nth-child(1n){
-                margin-right: .25em;
-            }
-        }
+      padding: 1em 1em;
+      font-weight: 600;
+      //font-size: 1.25em;
+      color: var(--secondary);
+      .label{
+          white-space: nowrap;
+          padding: 6px 14px;
+          border-radius: 5em;
+          border: 1px solid rgba(0,0,0,.25);
+          &:nth-child(1n){
+              margin-right: .25em;
+          }
+      }
     }
   }
   @media (max-width: 768px) {

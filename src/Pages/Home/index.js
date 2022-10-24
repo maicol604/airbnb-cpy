@@ -93,12 +93,13 @@ const HomeWrapper = styled.div`
     }
     
     .labels{
-        padding: 0 1em;
+        padding: 1em 1em;
         font-weight: 600;
         //font-size: 1.25em;
         color: var(--secondary);
         .label{
-            padding: .25em 1em;
+            white-space: nowrap;
+            padding: 6px 14px;
             border-radius: 5em;
             border: 1px solid rgba(0,0,0,.25);
             &:nth-child(1n){
@@ -205,6 +206,14 @@ const Home = () => {
                             <div className='carousel-item-title'>
                                 Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
                             </div>
+                            <div className='search-item'>
+                                <SearchWidget
+                                    onSearch={handleSearch}
+                                />
+                            </div>
+                            <div className='search-item-mobile'>
+                                <SearchMobile/>
+                            </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (1).jpeg')} alt=''/>
                     </div>
@@ -212,6 +221,14 @@ const Home = () => {
                         <div className='carousel-content'>
                             <div className='carousel-item-title'>
                                 Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
+                            </div>
+                            <div className='search-item'>
+                                <SearchWidget
+                                    onSearch={handleSearch}
+                                />
+                            </div>
+                            <div className='search-item-mobile'>
+                                <SearchMobile/>
                             </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (3).jpeg')} alt=''/>

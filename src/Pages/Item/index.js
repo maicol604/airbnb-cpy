@@ -78,7 +78,7 @@ const ItemWrapper = styled.div`
             .booking{
                 border: 1px solid rgba(0,0,0,.25);
                 border-radius: 1em;
-                padding: 1em;
+                padding: 1.5em;
                 display: flex;
                 flex-direction: column;
                 .price{
