@@ -13,6 +13,7 @@ import { GetExperiences } from '../../MockServer/experiences';
 const items = [0,0,0,0,0,0]
 
 const HomeWrapper = styled.div`
+    position: relative;
     .content{
         padding: 1em 8em;
     }
@@ -68,16 +69,13 @@ const HomeWrapper = styled.div`
             .carousel-item{
                 min-height: 50vh;
                 align-items: flex-end;
-                padding-bottom: 3em;
+                padding-bottom: 7.5em;
                 .carousel-content{
                     padding: 1em;
                     .carousel-item-title{
                         font-size: 2em;
                         width: 100%;
                     }
-                }
-                .search-item{
-                    display: none;
                 }
                 img{
                     width: auto;
@@ -87,11 +85,24 @@ const HomeWrapper = styled.div`
         .filters{
             display: none;
         }
-        .search-item-mobile{
-            display: block;
+        .search{
+            .search-item-mobile{
+                display: block;
+            }
+            .search-item{
+                display: none;
+            }
         }
     }
-    
+    .search{
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        left: 0;
+        padding-left: 10%;
+        padding-right: 10%;
+        top: calc(65vh - 18em);
+    }
     .labels{
         padding: 1em 1em;
         font-weight: 600;
@@ -184,19 +195,21 @@ const Home = () => {
     return (
         <HomeWrapper>
             <div className='carousel-wrapper'>
+                <div className='search'>
+                    <div className='search-item'>
+                        <SearchWidget
+                            onSearch={handleSearch}
+                        />
+                    </div>
+                    <div className='search-item-mobile'>
+                        <SearchMobile/>
+                    </div>
+                </div>
                 <Carousel autoplay>
                     <div className='carousel-item'>
                         <div className='carousel-content'>
                             <div className='carousel-item-title'>
                                 Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
-                            </div>
-                            <div className='search-item'>
-                                <SearchWidget
-                                    onSearch={handleSearch}
-                                />
-                            </div>
-                            <div className='search-item-mobile'>
-                                <SearchMobile/>
                             </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (2).jpeg')} alt=''/>
@@ -206,14 +219,6 @@ const Home = () => {
                             <div className='carousel-item-title'>
                                 Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
                             </div>
-                            <div className='search-item'>
-                                <SearchWidget
-                                    onSearch={handleSearch}
-                                />
-                            </div>
-                            <div className='search-item-mobile'>
-                                <SearchMobile/>
-                            </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (1).jpeg')} alt=''/>
                     </div>
@@ -221,14 +226,6 @@ const Home = () => {
                         <div className='carousel-content'>
                             <div className='carousel-item-title'>
                                 Lorem ipsum dolor sit amet, <span className='underline'>consectetur adipiscing elit.</span>
-                            </div>
-                            <div className='search-item'>
-                                <SearchWidget
-                                    onSearch={handleSearch}
-                                />
-                            </div>
-                            <div className='search-item-mobile'>
-                                <SearchMobile/>
                             </div>
                         </div>
                         <img src={require('../../Assets/images/carousel (3).jpeg')} alt=''/>
